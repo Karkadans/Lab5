@@ -2,33 +2,15 @@
 #include <stdlib.h>
 
 int main(int argc, char** argv) {
-    double array[10];
-    double res[10]; 
-    int k;
+    double a[10];
+    int k = atoi(argv[1]);
     
-    for(int i = 0; i < 10; ++i) {
-        scanf("%lf", &array[i]);
-    }
+    for(int i = 0; i < 10; i++) scanf("%lf", &a[i]);
     
-    k = atoi(argv[1]);
+    k = (k % 10 + 10) % 10; 
     
-    if (k < 0) {
-        k = -k; 
-        k = k % 10;
-        k = 10 - k;
-    }
-    
-    k = k % 10;
-    
-    for(int i = 0; i < 10; ++i) {
-        res[(i + k) % 10] = array[i];
-    }
-    
-    for(int i = 0; i < 10; ++i) {
-        printf("%g", res[i]);
-        if (i < 9) printf(" "); 
-    }
-    printf("\n");
-    
+    for(int i = 0; i < 10; i++) 
+        printf("%g ", a[(i - k + 10) % 10]);
+    printf("\n"); 
     return 0;
-}
+} 
